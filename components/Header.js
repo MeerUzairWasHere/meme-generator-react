@@ -1,5 +1,6 @@
 import React from "react"
-
+np
+// This component renders the header of the Meme Generator app
 export default function Header() {
     return (
         <header className="header">
