@@ -8,8 +8,9 @@ body {
 }
 
 main {
+  margin: 0 auto;
   padding: 36px;
-  /* max-width: 375px; */
+  max-width: 600px;
 }
 
 .header {
@@ -50,9 +51,8 @@ main {
   font-family: "Karla", sans-serif;
   border-radius: 5px;
   border: 1px solid #d5d4d8;
- 
-  text-align: center;
 
+  text-align: center;
 }
 
 .form--button {
@@ -73,7 +73,7 @@ main {
 
 .meme--image {
   max-width: 100%;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 .meme--text {
