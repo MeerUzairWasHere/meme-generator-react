@@ -13,12 +13,9 @@ export default function Meme() {
 
   // Fetch all memes from the Imgflip API on component mount and save them to state
   React.useEffect(() => {
-    async function getMemes() {
-      const res = await fetch("https://api.imgflip.com/get_memes");
-      const data = await res.json();
-      setAllMemes(data.data.memes);
-    }
-    getMemes();
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
   }, []);
 
   // Function to get a new meme image by selecting a random image from the allMemes array and updating state

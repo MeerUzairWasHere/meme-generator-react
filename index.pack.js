@@ -484,6 +484,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+np;
 // This component renders the header of the Meme Generator app
 function Header() {
     return _react2.default.createElement(
@@ -531,8 +532,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function Meme() {
   // Define state variables for the top text, bottom text, and meme image
   var _React$useState = _react2.default.useState({
@@ -556,40 +555,11 @@ function Meme() {
 
 
   _react2.default.useEffect(function () {
-    var getMemes = function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var res, data;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return fetch("https://api.imgflip.com/get_memes");
-
-              case 2:
-                res = _context.sent;
-                _context.next = 5;
-                return res.json();
-
-              case 5:
-                data = _context.sent;
-
-                setAllMemes(data.data.memes);
-
-              case 7:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function getMemes() {
-        return _ref.apply(this, arguments);
-      };
-    }();
-
-    getMemes();
+    fetch("https://api.imgflip.com/get_memes").then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      return setAllMemes(data.data.memes);
+    });
   }, []);
 
   // Function to get a new meme image by selecting a random image from the allMemes array and updating state
